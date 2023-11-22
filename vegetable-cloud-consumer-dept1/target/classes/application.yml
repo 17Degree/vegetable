@@ -1,0 +1,9 @@
+server:
+  port: 8301
+eureka:
+  client:
+    register-with-eureka: false
+    #作为服务消费者需要去注册中心搜索服务
+    fetch-registry: true
+    service-url:
+      defaultZone: http://cloud-eureka1.com:8101/eureka,http://cloud-eureka2.com:8102/eureka,http://cloud-eureka3.com:8103/eureka

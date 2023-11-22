@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.provider.dept.mapper.DeptMapper">
+    <resultMap id="BaseResultMap" type="cc.common.entity.Dept">
+        <id column="dept_no" jdbcType="INTEGER" property="deptNo"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="db_source" jdbcType="VARCHAR" property="dbSource"/>
+        <result column="type" property="type" typeHandler="cc.provider.dept.common.BizEnumTypeHandler"/>
+        <result column="state" property="state" typeHandler="cc.provider.dept.common.BizEnumTypeHandler"/>
+
+        <result column="create_time1" property="createTime1" jdbcType="BOOLEAN" javaType="java.lang.Boolean"/>
+        <result column="create_time2" property="createTime2" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+
+    </resultMap>
+
+
+    <resultMap id="MeetingResultMap" type="cc.common.entity.Meeting">
+        <id property="pkid" column="PKID" jdbcType="CHAR"/>
+        <result column="external_key" property="externalKey" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="room_no" property="roomNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="meeting_template_id" property="meetingTemplateId" jdbcType="CHAR" javaType="java.lang.String"/>
+        <result column="navigation_id" property="navigationId" jdbcType="CHAR" javaType="java.lang.String"/>
+        <result column="meeting_name" property="meetingName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="meeting_schedule" property="meetingSchedule" jdbcType="LONGVARCHAR" javaType="java.lang.String"/>
+        <result column="open_time" property="openTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="close_time" property="closeTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="real_open_time" property="realOpenTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="real_close_time" property="realCloseTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" javaType="java.lang.String"/>
+        <result column="status" property="status" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="type" property="type" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="sort" property="sort" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="fill_time" property="fillTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="meeting_password" property="meetingPassword" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="secret_level" property="secretLevel" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="is_secrecy" property="isSecrecy" jdbcType="TINYINT" javaType="java.lang.Integer"/>
+        <result column="encrypt_level" property="encryptLevel" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="remind_type" property="remindType" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="auto_control" property="autoControl" jdbcType="TINYINT" javaType="java.lang.Integer"/>
+        <result column="originator" property="originator" jdbcType="CHAR" javaType="java.lang.String"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="creator" property="creator" jdbcType="CHAR" javaType="java.lang.String"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="updater" property="updater" jdbcType="CHAR" javaType="java.lang.String"/>
+        <result column="deleted" property="deleted" jdbcType="BOOLEAN" javaType="java.lang.Boolean"/>
+
+    </resultMap>
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        *
+        from dept
+        where dept_no = #{deptNo,jdbcType=INTEGER}
+    </select>
+
+    <select id="GetAll" resultMap="BaseResultMap">
+        select *  from dept /*where type = ${@cc.common.enmus.DeptType@type_2.getVal()}*/
+    </select>
+
+    <select id="getMeeting" resultMap="MeetingResultMap">
+        select *  from tbl_meeting /*where type = ${@cc.common.enmus.DeptType@type_2.getVal()}*/
+    </select>
+
+
+
+    <!--<insert id="saveDept" parameterType="cc.common.entity.Dept">
+        INSERT INTO dept(`dept_no`, `dept_name`, `db_source`, `type`, `state`) VALUES (#{dept.deptNo}, #{dept.deptName}, #{dept.dbSource}, #{dept.type,typeHandler=cc.provider.dept.common.BizEnumTypeHandler}, #{dept.state,typeHandler=cc.provider.dept.common.BizEnumTypeHandler});
+    </insert>-->
+
+</mapper>

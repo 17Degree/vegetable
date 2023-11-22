@@ -1,0 +1,19 @@
+server:
+  port: 8102
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: cloud-eureka2.com
+    #lease-renewal-interval-in-seconds: 20
+    #以域名的形式像服务中心注册，而不是ip
+    prefer-ip-address: false
+  server:
+    #开启自我保护模式-当微服务不可用时进入保护期而不是直接踢出
+    enable-self-preservation: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://cloud-eureka1.com:8101/eureka,http://cloud-eureka3.com:8103/eureka

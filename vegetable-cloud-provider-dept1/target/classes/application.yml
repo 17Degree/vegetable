@@ -1,0 +1,40 @@
+server:
+  port: 8201
+spring:
+  application:
+    name: cloudProviderDept
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/vegetable_db1?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: cc.common.entity
+  configuration:
+    map-underscore-to-camel-case: true
+eureka:
+  client:
+    enabled: false
+    service-url:
+      #defaultZone: http://127.0.0.1:8100/eureka
+      defaultZone: http://cloud-eureka1.com:8101/eureka,http://cloud-eureka2.com:8102/eureka,http://cloud-eureka3.com:8103/eureka
+
+  instance:
+    instance-id: cloud-provicer-dept1
+    prefer-ip-address: false
+    #每隔20秒向eureka服务器发送一次心跳
+    lease-renewal-interval-in-seconds: 20
+    #告诉eureka服务器如果超过30秒没有发送心跳就自己踢出
+    lease-expiration-duration-in-seconds: 60
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+info:
+  app.name: cloud-provicer-dept1
+  company.name: cc.vegetable.com
+  build.aetifactId: vegetable-cloud-provider-dept1
+  build.version: 1.0-SNAPSHOT
+
