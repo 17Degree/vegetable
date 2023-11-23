@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- 测试本地git -->
     <!-- 测试本地idea提交1-->
+    <!-- 测试本地idea提交2-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
