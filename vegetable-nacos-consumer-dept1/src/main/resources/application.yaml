@@ -1,0 +1,8 @@
+server:
+  port: 8301
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.119.102:8848

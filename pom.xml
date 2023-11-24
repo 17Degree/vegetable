@@ -33,8 +33,11 @@
         <module>vegetable-cloud-provider-dept3</module>
 
         <module>vegetable-cloud-consumer-dept1</module>
+        <module>vegetable-nacos-consumer-dept1</module>
+
         <module>vagetable-redis</module>
         <module>vegetable-nacos-provider-dept1</module>
+        <module>vegetable-nacos-config</module>
     </modules>
 
     <dependencyManagement>
