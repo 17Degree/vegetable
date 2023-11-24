@@ -1,0 +1,28 @@
+server:
+  port: 8203
+spring:
+  application:
+    name: nacosProviderDept
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/vegetable_db3?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.119.102:8848
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: cc.common.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+info:
+  app.name: cloud-provicer-dept1
+  company.name: cc.vegetable.com
+  build.aetifactId: @project.artifactId@
+  build.version: @project.version@
+
